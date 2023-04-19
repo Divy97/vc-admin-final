@@ -10,6 +10,11 @@ import axios from "axios";
 const Single = () => {
   const { userId } = useUserID();
   const [data, setData] = useState([]);
+  let token = localStorage.getItem("regToken");
+
+  if (!token) {
+    window.location.href = "/login";
+  }
 
   useEffect(() => {
     axios

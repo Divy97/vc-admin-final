@@ -4,6 +4,11 @@ import Navbar from "../../component/navbar/Navbar";
 import GuestDataTable from "../../component/datatable/GuestDataTable";
 
 const GuestList = () => {
+  let token = localStorage.getItem("regToken");
+
+  if (!token) {
+    window.location.href = "/login";
+  }
   return (
     <div className="list">
       <Sidebar />

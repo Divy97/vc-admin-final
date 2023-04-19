@@ -8,6 +8,11 @@ import Featured from "../../component/featured/Featured";
 import "./Home.scss";
 import MeetingDataTable from "../../component/meetingDataTable/MeetingDataTable";
 const Home = () => {
+  let token = localStorage.getItem("regToken");
+
+  if (!token) {
+    window.location.href = "/login";
+  }
   return (
     <div className="home">
       <Sidebar />
@@ -24,7 +29,7 @@ const Home = () => {
         </div>
         <div className="listContainer">
           <div className="listTitle">Latest Meetings</div>
-          <MeetingDataTable  />
+          <MeetingDataTable />
         </div>
       </div>
     </div>

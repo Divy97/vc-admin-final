@@ -4,6 +4,12 @@ import Navbar from "../../component/navbar/Navbar";
 import FeedDataTable from "../../component/datatable/FeedDataTable";
 
 const FeedList = () => {
+  let token = localStorage.getItem("regToken");
+
+  if (!token) {
+    window.location.href = "/login";
+  }
+
   return (
     <div className="list">
       <Sidebar />

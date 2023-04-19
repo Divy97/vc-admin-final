@@ -10,6 +10,7 @@ import { useContext } from "react";
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
+  let regToken = localStorage.getItem("regToken");
   return (
     <div className="sidebar">
       <div className="top">
@@ -51,14 +52,22 @@ const Sidebar = () => {
             </li>
           </Link>
           <p className="title">USER</p>
-          <li>
-            <AccountCircleOutlinedIcon className="icon" />
-            <span>Profile</span>
-          </li>
-          <li>
-            <ExitToAppIcon className="icon" />
-            <span>Logout</span>
-          </li>
+
+          {regToken ? (
+            <li>
+              <ExitToAppIcon className="icon" />
+              <span
+                onClick={() => {
+                  localStorage.removeItem("regToken");
+                  window.location.href = "/";
+                }}
+              >
+                Logout
+              </span>
+            </li>
+          ) : (
+            ""
+          )}
         </ul>
       </div>
       <div className="bottom">
